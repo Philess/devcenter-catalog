@@ -16,7 +16,7 @@ tasks:
   - name: ~/winget
     description: Install IntelliJ
     parameters:
-      package:  winget install --id=JetBrains.IntelliJIDEA.Ultimate -e
+      package:  JetBrains.IntelliJIDEA.Ultimate
 
   # - name: ~/powershell
   #   parameters:
