@@ -8,24 +8,29 @@ tasks:
     parameters:
       downloadUrl: 'https://raw.githubusercontent.com/contoso-co/common-eng-sys/msft-git/dsc-configurations/common-config.dsc.yaml'
 
-  - name: Install Eclipse IDE
-    type: powershell
-    script: |
-      # Download Eclipse IDE
-      Invoke-WebRequest -Uri "https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2023-09/R/eclipse-inst-jre-win64.exe" -OutFile "C:\Temp\eclipse-installer.exe"
+  # Install Eclipse IDE
+  - name: powershell
+    description: Download Eclipse IDE
+    parameters:
+      command: "Invoke-WebRequest -Uri \"https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2023-09/R/eclipse-inst-jre-win64.exe\" -OutFile \"C:\\Temp\\eclipse-installer.exe\\"'"
 
-      # Install Eclipse IDE
-      Start-Process -FilePath "C:\Temp\eclipse-installer.exe" -ArgumentList "/S" -Wait
+  - name: powershell
+    description: Install Eclipse IDE
+    parameters:
+      command: "Start-Process -FilePath \"C:\\Temp\\eclipse-installer.exe\" -ArgumentList \"/S\" -Wait"
 
-      # Clean up
-      Remove-Item -Path "C:\Temp\eclipse-installer.exe"
-    runAs: system
+  - name: powershell
+    description: Clean Up installer
+    parameters:
+      command: "Remove-Item -Path \"C:\\Temp\\eclipse-installer.exe\""
 
+  #Install AZD cli
   - name: ~/winget
     description: Install AZD
     parameters:
       package: Microsoft.Azd
 
+  #Install IntelliJ
   - name: ~/winget
     description: Install IntelliJ
     parameters:
