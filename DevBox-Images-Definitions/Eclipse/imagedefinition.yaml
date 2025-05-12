@@ -1,0 +1,15 @@
+$schema: "1.0"
+name: "java-eng"
+image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
+description: "This definition is for the java engineering environment"
+
+tasks:
+  - name: ~/winget
+    parameters:
+      downloadUrl: 'https://raw.githubusercontent.com/contoso-co/common-eng-sys/msft-git/dsc-configurations/common-config.dsc.yaml'
+
+  # Install Eclipse IDE
+  - name: powershell
+    description: Download Eclipse IDE
+    parameters:
+      command: 'Invoke-WebRequest -Uri "https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2023-09/R/eclipse-inst-jre-win64.exe" -OutFile "C:\Temp\eclipse-installer.exe"'
