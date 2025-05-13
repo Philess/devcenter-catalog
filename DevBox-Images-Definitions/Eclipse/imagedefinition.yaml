@@ -13,3 +13,13 @@ tasks:
     description: Download Eclipse IDE
     parameters:
       command: 'Invoke-WebRequest -Uri "https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2023-09/R/eclipse-inst-jre-win64.exe" -OutFile "C:\Temp\eclipse-installer.exe"'
+
+  - name: powershell
+    description: Install Eclipse IDE
+    parameters:
+      command: 'Start-Process -FilePath "C:\Temp\eclipse-installer.exe" -ArgumentList "/S" -Wait'
+
+  - name: powershell
+    description: Clean Up installer
+    parameters:
+      command: 'Remove-Item -Path "C:\Temp\eclipse-installer.exe"'
